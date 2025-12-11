@@ -38,4 +38,11 @@ public class ApiResponse <T>{
                 .message(customMessage == null ? errorCode.getMessage() : customMessage)
                 .build();
     }
+    public static <T> ApiResponse<T> apiResponse(ErrorCode errorCode, String customMessage, T data) {
+        return ApiResponse.<T>builder()
+                .code(errorCode.getCode())
+                .message(customMessage == null ? errorCode.getMessage() : customMessage)
+                .data(data)
+                .build();
+    }
 }

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 interface JpaUserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
 }
 
 @Repository
@@ -34,6 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setFullName(user.getFullName());
         userToUpdate.setPhone(user.getPhone());
+        userToUpdate.setRole(user.getRole());
         return jpaUserRepository.save(userToUpdate);
     }
 
@@ -43,4 +45,18 @@ public class UserRepositoryImpl implements UserRepository {
                 .orElse(null);
     }
 
+    @Override
+    public User findByUsername(String username) {
+        return jpaUserRepository.findByUsername(username).orElse(null);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return jpaUserRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return jpaUserRepository.findByUsername(username).isPresent();
+    }
 }

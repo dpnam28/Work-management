@@ -23,7 +23,12 @@ public enum ErrorCode {
     INVALID_PASSWORD("Invalid password", 400),
     EMAIL_NOT_VALID("Email is not valid", 400),
     ARGUMENT_IS_REQUIRED("{arg} is required", 400),
-    ;
+    NOT_READABLE("Cannot deserialize value", 400),
+    POSITION_IS_REQUIRED("Position is required", 400),
+    ENTRY_YEAR_IS_REQUIRED("Entry year is required", 400),
+    MAJOR_IS_REQUIRED("Major is required", 400),
+    FACULTY_IS_REQUIRED("Faculty is required", 400),
+    TOKEN_INVALID("Token is invalid", 400);
     private final String message;
     private final int code;
 

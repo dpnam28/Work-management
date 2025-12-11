@@ -3,6 +3,7 @@ package org.dpnam28.workmanagement.domain.exception;
 import lombok.extern.slf4j.Slf4j;
 import org.dpnam28.workmanagement.domain.dto.ApiResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,6 +25,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse<Object>> handleAppException(AppException e) {
         log.error(e.toString());
         ErrorCode errorCode = e.getErrorCode();
+        return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode));
+    }
+
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiResponse<Object>> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+        log.error(e.toString());
+        ErrorCode errorCode = ErrorCode.NOT_READABLE;
         return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode));
     }
 

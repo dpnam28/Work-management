@@ -41,11 +41,11 @@ public class Student {
     @Column(name = "student_code", nullable = false, unique = true)
     private String studentCode;
 
-    @Column(name = "entry_year", nullable = false)
+    @Column(name = "entry_year")
     private Integer entryYear;
 
     @ManyToOne
-    @JoinColumn(name = "id_major", nullable = false)
+    @JoinColumn(name = "id_major")
     private Major major;
 
     @Builder.Default

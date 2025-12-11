@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthLoginResponse {
-    private Long id;
+public class AuthInspectResponse {
+    private Long userId;
     private String username;
     private String email;
-    private String fullName;
-    private String code;
-    private String token;
     private String role;
     private String position;
+    private boolean valid;
 }

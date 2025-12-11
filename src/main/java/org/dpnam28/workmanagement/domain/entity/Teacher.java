@@ -41,7 +41,7 @@ public class Teacher {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "faculty_id", nullable = false)
+    @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
     @Column(name = "teacher_code", nullable = false, unique = true)
