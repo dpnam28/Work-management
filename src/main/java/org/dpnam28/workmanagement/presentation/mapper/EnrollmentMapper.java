@@ -9,12 +9,12 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = ReferenceMapper.class)
 public interface EnrollmentMapper {
-    @Mapping(target = "id", expression = "java(new EnrollmentId(request.getStudentId(), request.getSubjectId()))")
+    @Mapping(target = "id", expression = "java(new EnrollmentId(request.getStudentId(), request.getClassSubjectId()))")
     @Mapping(target = "student", source = "studentId")
-    @Mapping(target = "subject", source = "subjectId")
+    @Mapping(target = "classSubject", source = "classSubjectId")
     Enrollment toEntity(EnrollmentRequest request);
 
     @Mapping(target = "studentId", source = "id.studentId")
-    @Mapping(target = "subjectId", source = "id.subjectId")
+    @Mapping(target = "classSubjectId", source = "id.classSubjectId")
     EnrollmentResponse toResponse(Enrollment enrollment);
 }

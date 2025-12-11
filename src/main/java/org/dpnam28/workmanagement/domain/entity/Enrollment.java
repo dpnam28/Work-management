@@ -30,7 +30,7 @@ public class Enrollment {
     private Student student;
 
     @ManyToOne
-    @MapsId("subjectId")
-    @JoinColumn(name = "id_subject")
-    private Subject subject;
+    @MapsId("classSubjectId")
+    @JoinColumn(name = "id_class_subject")
+    private ClassSubject classSubject;
 }

@@ -59,4 +59,9 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean existsByUsername(String username) {
         return jpaUserRepository.findByUsername(username).isPresent();
     }
+
+    @Override
+    public User findById(Long id) {
+        return jpaUserRepository.findById(id).orElse(null);
+    }
 }

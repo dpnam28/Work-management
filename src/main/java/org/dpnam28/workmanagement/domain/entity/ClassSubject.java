@@ -51,4 +51,8 @@ public class ClassSubject {
     @Builder.Default
     @OneToMany(mappedBy = "classSubject")
     private List<TeachingAssignment> teachingAssignments = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "classSubject")
+    private List<Enrollment> enrollments = new ArrayList<>();
 }

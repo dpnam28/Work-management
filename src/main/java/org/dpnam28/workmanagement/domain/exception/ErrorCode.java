@@ -14,12 +14,14 @@ public enum ErrorCode {
     SEMESTER_NOT_FOUND("Semester not found", 404),
     SUBJECT_NOT_FOUND("Subject not found", 404),
     CLASS_SUBJECT_NOT_FOUND("Class subject not found", 404),
+    CLASS_SUBJECT_FULL("Class subject is full", 400),
     PLAN_NOT_FOUND("Plan not found", 404),
     TASK_NOT_FOUND("Task not found", 404),
     TASK_ASSIGNMENT_NOT_FOUND("Task assignment not found", 404),
     REPORT_NOT_FOUND("Report not found", 404),
     MEETING_NOT_FOUND("Meeting not found", 404),
     ENROLLMENT_NOT_FOUND("Enrollment not found", 404),
+    ENROLLMENT_ALREADY_EXISTS("Enrollment already exists", 409),
     INVALID_PASSWORD("Invalid password", 400),
     EMAIL_NOT_VALID("Email is not valid", 400),
     ARGUMENT_IS_REQUIRED("{arg} is required", 400),
@@ -28,7 +30,11 @@ public enum ErrorCode {
     ENTRY_YEAR_IS_REQUIRED("Entry year is required", 400),
     MAJOR_IS_REQUIRED("Major is required", 400),
     FACULTY_IS_REQUIRED("Faculty is required", 400),
-    TOKEN_INVALID("Token is invalid", 400);
+    CODE_IS_REQUIRED("Code is required", 400),
+    TOKEN_INVALID("Token is invalid", 400),
+    ACCESS_DENIED("Access denied", 403),
+    ENTITY_STATE_INVALID("Entity state invalid", 500),
+    CODE_ALREADY_EXISTS("Code already exists", 409);
     private final String message;
     private final int code;
 

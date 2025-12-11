@@ -9,11 +9,11 @@ import org.dpnam28.workmanagement.domain.entity.PositionType;
 import org.dpnam28.workmanagement.domain.entity.RoleType;
 import org.dpnam28.workmanagement.domain.exception.AppException;
 import org.dpnam28.workmanagement.domain.exception.ErrorCode;
+import org.dpnam28.workmanagement.presentation.dto.auth.AuthChangePasswordRequest;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthInspectResponse;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthLoginRequest;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthLoginResponse;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthRegisterRequest;
-import org.dpnam28.workmanagement.presentation.mapper.AuthMapper;
 import org.dpnam28.workmanagement.usecase.AuthUseCase;
 import org.dpnam28.workmanagement.usecase.JwtService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthUseCase authUseCase;
-    private final AuthMapper authMapper;
     private final JwtService jwtService;
 
     @PostMapping("/login")
@@ -58,11 +57,18 @@ public class AuthController {
                 .id(created.getId())
                 .username(created.getUsername())
                 .email(created.getEmail())
+                .code(created.getRole() == RoleType.STUDENT ? created.getStudent().getStudentCode() : created.getTeacher().getTeacherCode())
                 .fullName(created.getFullName())
                 .role(created.getRole().name())
                 .position(position != null ? position.name() : null)
                 .build();
         return ApiResponse.apiResponseSuccess("Register succeeded", response);
+    }
+
+    @PostMapping("/change-password")
+    public ApiResponse<Object> changePassword(@RequestBody @Valid AuthChangePasswordRequest request) {
+        authUseCase.changePassword(request);
+        return ApiResponse.apiResponseSuccess("Password changed successfully", null);
     }
 
     @GetMapping("/inspector")

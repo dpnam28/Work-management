@@ -20,6 +20,6 @@ public class EnrollmentId implements Serializable {
     @Column(name = "id_student")
     private Long studentId;
 
-    @Column(name = "id_subject")
-    private Long subjectId;
+    @Column(name = "id_class_subject")
+    private Long classSubjectId;
 }

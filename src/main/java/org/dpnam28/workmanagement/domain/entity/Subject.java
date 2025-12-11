@@ -48,7 +48,4 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private List<ClassSubject> classSubjects = new ArrayList<>();
 
-    @Builder.Default
-    @OneToMany(mappedBy = "subject")
-    private List<Enrollment> enrollments = new ArrayList<>();
 }

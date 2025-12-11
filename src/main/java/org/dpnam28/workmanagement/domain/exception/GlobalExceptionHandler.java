@@ -2,6 +2,7 @@ package org.dpnam28.workmanagement.domain.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.dpnam28.workmanagement.domain.dto.ApiResponse;
+import org.hibernate.AssertionFailure;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -56,5 +57,12 @@ public class GlobalExceptionHandler {
             }
         }
         return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode, responseMessage));
+    }
+
+    @ExceptionHandler(value = AssertionFailure.class)
+    public ResponseEntity<ApiResponse<Object>> handleAssertionFailure(AssertionFailure e) {
+        log.error("Hibernate assertion failure", e);
+        ErrorCode errorCode = ErrorCode.ENTITY_STATE_INVALID;
+        return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode, e.getMessage()));
     }
 }

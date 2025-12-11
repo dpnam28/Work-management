@@ -1,4 +1,4 @@
-package org.dpnam28.workmanagement.presentation.dto.enrollment;
+package org.dpnam28.workmanagement.presentation.dto.classsubject;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,10 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnrollmentRequest {
-    @NotNull(message = "Student is required")
+public class ClassSubjectEnrollStudentRequest {
+    @NotNull(message = "Student id is required")
     private Long studentId;
-
-    @NotNull(message = "Subject is required")
-    private Long classSubjectId;
 }
