@@ -35,7 +35,7 @@ public class Subject {
     @JoinColumn(name = "id_faculty", nullable = false)
     private Faculty faculty;
 
-    @Column(name = "subject_name", nullable = false)
+    @Column(name = "subject_name", nullable = false, unique = true)
     private String subjectName;
 
     @Column(name = "subject_code", nullable = false, unique = true)

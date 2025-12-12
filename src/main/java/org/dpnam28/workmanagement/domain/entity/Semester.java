@@ -30,7 +30,7 @@ public class Semester {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "semester_name", nullable = false)
+    @Column(name = "semester_name", nullable = false, unique = true)
     private String semesterName;
 
     @Column(name = "start_date", nullable = false)

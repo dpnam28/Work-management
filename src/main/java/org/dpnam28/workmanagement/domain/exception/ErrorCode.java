@@ -21,6 +21,7 @@ public enum ErrorCode {
     REPORT_NOT_FOUND("Report not found", 404),
     MEETING_NOT_FOUND("Meeting not found", 404),
     ENROLLMENT_NOT_FOUND("Enrollment not found", 404),
+    SCHEDULE_NOT_FOUND("Schedule not found", 404),
     ENROLLMENT_ALREADY_EXISTS("Enrollment already exists", 409),
     INVALID_PASSWORD("Invalid password", 400),
     EMAIL_NOT_VALID("Email is not valid", 400),
@@ -34,7 +35,11 @@ public enum ErrorCode {
     TOKEN_INVALID("Token is invalid", 400),
     ACCESS_DENIED("Access denied", 403),
     ENTITY_STATE_INVALID("Entity state invalid", 500),
-    CODE_ALREADY_EXISTS("Code already exists", 409);
+    CODE_ALREADY_EXISTS("Code already exists", 409),
+    FACULTY_NAME_ALREADY_EXISTS("Faculty name already exists", 409),
+    SEMESTER_NAME_ALREADY_EXISTS("Semester name already exists", 409),
+    SUBJECT_NAME_ALREADY_EXISTS("Subject name already exists", 409),
+    SCHEDULE_TIME_ALREADY_EXISTS("Schedule time already exists", 409);
     private final String message;
     private final int code;
 

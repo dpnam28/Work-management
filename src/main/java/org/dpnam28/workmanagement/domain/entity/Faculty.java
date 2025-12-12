@@ -29,7 +29,7 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "faculty_name", nullable = false)
+    @Column(name = "faculty_name", nullable = false, unique = true)
     private String facultyName;
 
     @Column(name = "faculty_code", nullable = false, unique = true)
