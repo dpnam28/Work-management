@@ -5,6 +5,7 @@ import org.dpnam28.workmanagement.domain.entity.Plan;
 import org.dpnam28.workmanagement.domain.entity.Task;
 import org.dpnam28.workmanagement.domain.entity.TaskStatus;
 import org.dpnam28.workmanagement.domain.entity.Teacher;
+import org.dpnam28.workmanagement.domain.entity.PositionType;
 import org.dpnam28.workmanagement.domain.exception.AppException;
 import org.dpnam28.workmanagement.domain.exception.ErrorCode;
 import org.dpnam28.workmanagement.infrastructure.repository.PlanJpaRepository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -64,12 +66,24 @@ public class TaskUseCase {
         return taskMapper.toResponse(taskRepository.save(task));
     }
 
+    public List<TaskResponse> getAll(Long requesterId) {
+        requireHeadTeacher(requesterId);
+        return taskMapper.toResponseList(taskRepository.findAll());
+    }
+
     private Teacher requireTeacher(Long teacherId) {
         if (teacherId == null) {
             throw new AppException(ErrorCode.ACCESS_DENIED);
         }
         return teacherRepository.findById(teacherId)
                 .orElseThrow(() -> new AppException(ErrorCode.TEACHER_NOT_FOUND));
+    }
+
+    private void requireHeadTeacher(Long teacherId) {
+        Teacher teacher = requireTeacher(teacherId);
+        if (teacher.getPosition() != PositionType.HEAD) {
+            throw new AppException(ErrorCode.ACCESS_DENIED);
+        }
     }
 
     private byte[] extractPdfBytes(MultipartFile file) {

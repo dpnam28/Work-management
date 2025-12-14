@@ -1,6 +1,7 @@
 package org.dpnam28.workmanagement.domain.exception;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.Objects;
+
 import org.dpnam28.workmanagement.domain.dto.ApiResponse;
 import org.hibernate.AssertionFailure;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +9,8 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import java.util.Objects;
+import org.springframework.security.authorization.AuthorizationDeniedException;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ControllerAdvice
@@ -65,4 +66,13 @@ public class GlobalExceptionHandler {
         ErrorCode errorCode = ErrorCode.ENTITY_STATE_INVALID;
         return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode, e.getMessage()));
     }
+    @ExceptionHandler(value = AuthorizationDeniedException.class)
+    public ResponseEntity<ApiResponse<Object>> handleAuthorizationDeniedException(AuthorizationDeniedException e) {
+        log.error(e.toString());
+        ErrorCode errorCode = ErrorCode.ACCESS_DENIED;
+        return ResponseEntity.status(errorCode.getCode()).body(ApiResponse.apiResponse(errorCode));
+    }
+
+    
+    
 }

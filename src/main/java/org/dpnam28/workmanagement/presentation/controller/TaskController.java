@@ -13,6 +13,7 @@ import org.dpnam28.workmanagement.usecase.TaskUseCase;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
@@ -55,6 +58,14 @@ public class TaskController {
         AuthenticatedUser principal = getPrincipal(authentication);
         TaskResponse response = taskUseCase.markAsDone(id, principal.getId());
         return ApiResponse.apiResponseSuccess("Complete task succeeded", response);
+    }
+
+    @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_TEACHER') and principal.position == T(org.dpnam28.workmanagement.domain.entity.PositionType).HEAD")
+    public ApiResponse<List<TaskResponse>> getAll(Authentication authentication) {
+        AuthenticatedUser principal = getPrincipal(authentication);
+        List<TaskResponse> responses = taskUseCase.getAll(principal.getId());
+        return ApiResponse.apiResponseSuccess("Get tasks succeeded", responses);
     }
 
     private AuthenticatedUser getPrincipal(Authentication authentication) {
