@@ -2,6 +2,8 @@ package org.dpnam28.workmanagement.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -48,8 +50,9 @@ public class Plan {
     @JoinColumn(name = "id_faculty")
     private Faculty faculty;
 
-    @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private PlanStatus status = PlanStatus.PENDING;
 
     @Builder.Default
     @OneToMany(mappedBy = "plan")

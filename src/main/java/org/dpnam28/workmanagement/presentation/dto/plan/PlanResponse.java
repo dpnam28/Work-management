@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.dpnam28.workmanagement.domain.entity.PlanStatus;
 
 @Data
 @Builder
@@ -16,5 +17,5 @@ public class PlanResponse {
     private Long createdById;
     private Long approvedById;
     private Long facultyId;
-    private String status;
+    private PlanStatus status;
 }
