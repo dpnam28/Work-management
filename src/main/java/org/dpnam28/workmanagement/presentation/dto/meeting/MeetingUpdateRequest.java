@@ -1,7 +1,7 @@
 package org.dpnam28.workmanagement.presentation.dto.meeting;
 
-import jakarta.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,9 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MeetingRequest {
-    @NotNull(message = "Faculty is required")
-    private Long facultyId;
+public class MeetingUpdateRequest {
 
     @NotBlank(message = "Meeting title is required")
     private String meetingTitle;

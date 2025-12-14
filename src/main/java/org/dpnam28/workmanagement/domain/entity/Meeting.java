@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "meetings")
@@ -43,5 +43,5 @@ public class Meeting {
     private String meetingDescription;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDateTime date;
 }
