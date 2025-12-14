@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.dpnam28.workmanagement.presentation.dto.task.TaskResponse;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -17,5 +18,6 @@ public class TaskAssignmentResponse {
     private Long assignById;
     private Long assignedToTeacherId;
     private Long assignedToFacultyId;
-    private LocalDate assignDate;
+    private LocalDateTime assignDate;
+    private TaskResponse task;
 }

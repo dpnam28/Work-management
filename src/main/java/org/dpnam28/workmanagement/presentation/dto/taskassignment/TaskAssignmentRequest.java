@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -16,12 +14,7 @@ public class TaskAssignmentRequest {
     @NotNull(message = "Task is required")
     private Long taskId;
 
-    private Long assignById;
-
     private Long assignedToTeacherId;
 
     private Long assignedToFacultyId;
-
-    @NotNull(message = "Assign date is required")
-    private LocalDate assignDate;
 }
