@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.dpnam28.workmanagement.domain.entity.TaskStatus;
+
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -13,8 +16,8 @@ public class TaskResponse {
     private Long id;
     private Long planId;
     private String taskTitle;
-    private String deadline;
+    private LocalDateTime deadline;
     private String taskDescription;
-    private String filePath;
-    private String status;
+    private byte[] file;
+    private TaskStatus status;
 }

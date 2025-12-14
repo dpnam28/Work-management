@@ -2,10 +2,13 @@ package org.dpnam28.workmanagement.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -14,6 +17,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -35,16 +40,18 @@ public class Task {
     private String taskTitle;
 
     @Column(nullable = false)
-    private String deadline;
+    private LocalDateTime deadline;
 
     @Column(name = "task_description")
     private String taskDescription;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Lob
+    @Column(name = "file_data", columnDefinition = "MEDIUMBLOB")
+    private byte[] file;
 
-    @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private TaskStatus status = TaskStatus.INCOMPLETE;
 
     @OneToOne(mappedBy = "task")
     private TaskAssignment assignment;

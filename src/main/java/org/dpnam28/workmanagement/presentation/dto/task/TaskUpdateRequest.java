@@ -15,9 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskRequest {
-    @NotNull(message = "Plan is required")
-    private Long planId;
+public class TaskUpdateRequest {
 
     @NotBlank(message = "Task title is required")
     private String taskTitle;
