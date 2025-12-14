@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reports")
@@ -42,6 +43,10 @@ public class Report {
     @Column(name = "report_content", columnDefinition = "TEXT")
     private String reportContent;
 
+    @Lob
+    @Column(name = "file_data", columnDefinition = "MEDIUMBLOB")
+    private byte[] file;
+
     @Column(name = "created_date", nullable = false)
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 }

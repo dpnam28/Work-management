@@ -7,8 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -20,11 +18,5 @@ public class ReportRequest {
     @NotBlank(message = "Report title is required")
     private String reportTitle;
 
-    @NotNull(message = "Created by is required")
-    private Long createdById;
-
     private String reportContent;
-
-    @NotNull(message = "Created date is required")
-    private LocalDate createdDate;
 }
