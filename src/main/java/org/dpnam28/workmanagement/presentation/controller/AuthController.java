@@ -13,6 +13,7 @@ import org.dpnam28.workmanagement.presentation.dto.auth.AuthChangePasswordReques
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthInspectResponse;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthLoginRequest;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthLoginResponse;
+import org.dpnam28.workmanagement.presentation.dto.auth.AuthRefreshRequest;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthRegisterRequest;
 import org.dpnam28.workmanagement.usecase.AuthUseCase;
 import org.dpnam28.workmanagement.usecase.JwtService;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.ExpiredJwtException;
 
 @RestController
 @RequestMapping("/auth")
@@ -71,6 +74,12 @@ public class AuthController {
         return ApiResponse.apiResponseSuccess("Password changed successfully", null);
     }
 
+    @PostMapping("/refresh")
+    public ApiResponse<AuthLoginResponse> refresh(@RequestBody @Valid AuthRefreshRequest request) {
+        AuthLoginResponse response = authUseCase.refreshToken(request.getToken());
+        return ApiResponse.apiResponseSuccess("Token refreshed", response);
+    }
+
     @GetMapping("/inspector")
     public ApiResponse<AuthInspectResponse> inspect(@RequestParam("token") String token) {
         try {
@@ -84,6 +93,8 @@ public class AuthController {
                     .valid(true)
                     .build();
             return ApiResponse.apiResponseSuccess("Token is valid", response);
+        } catch (ExpiredJwtException ex) {
+            throw new AppException(ErrorCode.TOKEN_EXPIRED);
         } catch (Exception ex) {
             throw new AppException(ErrorCode.TOKEN_INVALID);
         }

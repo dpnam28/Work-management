@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dpnam28.workmanagement.domain.entity.Faculty;
 import org.dpnam28.workmanagement.domain.entity.Major;
+import org.dpnam28.workmanagement.domain.entity.PositionType;
 import org.dpnam28.workmanagement.domain.entity.RoleType;
 import org.dpnam28.workmanagement.domain.entity.Student;
 import org.dpnam28.workmanagement.domain.entity.Teacher;
@@ -16,10 +17,14 @@ import org.dpnam28.workmanagement.infrastructure.repository.MajorJpaRepository;
 import org.dpnam28.workmanagement.infrastructure.repository.StudentJpaRepository;
 import org.dpnam28.workmanagement.infrastructure.repository.TeacherJpaRepository;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthChangePasswordRequest;
+import org.dpnam28.workmanagement.presentation.dto.auth.AuthLoginResponse;
 import org.dpnam28.workmanagement.presentation.dto.auth.AuthRegisterRequest;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 
 @Slf4j
 @Service
@@ -27,6 +32,7 @@ import org.springframework.stereotype.Service;
 public class AuthUseCase {
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
+    private final JwtService jwtService;
     private final StudentJpaRepository studentRepository;
     private final TeacherJpaRepository teacherRepository;
     private final MajorJpaRepository majorRepository;
@@ -159,5 +165,48 @@ public class AuthUseCase {
         }
         user.setPassword(request.getNewPassword());
         userRepository.save(user);
+    }
+
+    public AuthLoginResponse refreshToken(String token) {
+        Claims claims = extractClaimsEvenIfExpired(token);
+        Long userId = claims.get("userId", Long.class);
+        if (userId == null) {
+            throw new AppException(ErrorCode.TOKEN_INVALID);
+        }
+        User user = userRepository.findById(userId);
+        if (user == null) {
+            throw new AppException(ErrorCode.USER_NOT_FOUND);
+        }
+        attachProfile(user, user.getRole());
+        PositionType position = user.getRole() == RoleType.TEACHER && user.getTeacher() != null
+                ? user.getTeacher().getPosition()
+                : null;
+        String refreshedToken = jwtService.generateToken(user, position);
+        String code = null;
+        if (user.getRole() == RoleType.STUDENT && user.getStudent() != null) {
+            code = user.getStudent().getStudentCode();
+        } else if (user.getRole() == RoleType.TEACHER && user.getTeacher() != null) {
+            code = user.getTeacher().getTeacherCode();
+        }
+        return AuthLoginResponse.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .code(code)
+                .fullName(user.getFullName())
+                .role(user.getRole().name())
+                .position(position != null ? position.name() : null)
+                .token(refreshedToken)
+                .build();
+    }
+
+    private Claims extractClaimsEvenIfExpired(String token) {
+        try {
+            return jwtService.extractAllClaims(token);
+        } catch (ExpiredJwtException ex) {
+            return ex.getClaims();
+        } catch (Exception ex) {
+            throw new AppException(ErrorCode.TOKEN_INVALID);
+        }
     }
 }

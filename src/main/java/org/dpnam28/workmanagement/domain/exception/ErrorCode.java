@@ -33,6 +33,7 @@ public enum ErrorCode {
     FACULTY_IS_REQUIRED("Faculty is required", 400),
     CODE_IS_REQUIRED("Code is required", 400),
     TOKEN_INVALID("Token is invalid", 400),
+    TOKEN_EXPIRED("Token is expired", 403),
     ACCESS_DENIED("Access denied", 403),
     ENTITY_STATE_INVALID("Entity state invalid", 500),
     CODE_ALREADY_EXISTS("Code already exists", 409),
