@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -100,6 +102,16 @@ public class ClassSubjectUseCase {
             }
         });
         return assignments;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ClassSubject> getStudentEnrolledClasses(Long studentId) {
+        studentRepository.findById(studentId)
+                .orElseThrow(() -> new AppException(ErrorCode.STUDENT_NOT_FOUND));
+        return enrollmentRepository.findByStudent_Id(studentId).stream()
+                .map(Enrollment::getClassSubject)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
     private void validateEnrollmentCapacity(Long classSubjectId, Integer maxStudent) {

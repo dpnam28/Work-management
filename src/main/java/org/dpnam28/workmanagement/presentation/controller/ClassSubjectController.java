@@ -3,7 +3,6 @@ package org.dpnam28.workmanagement.presentation.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.dpnam28.workmanagement.domain.dto.ApiResponse;
-import org.dpnam28.workmanagement.domain.entity.PositionType;
 import org.dpnam28.workmanagement.domain.entity.TeachingAssignment;
 import org.dpnam28.workmanagement.domain.entity.ClassSubject;
 import org.dpnam28.workmanagement.domain.entity.Enrollment;
@@ -63,6 +62,17 @@ public class ClassSubjectController {
         return ApiResponse.apiResponseSuccess("Drop succeeded", null);
     }
 
+    @GetMapping("/enrolled")
+    @PreAuthorize("hasAuthority('ROLE_STUDENT')")
+    public ApiResponse<List<ClassSubjectResponse>> getEnrolledClasses(Authentication authentication) {
+        AuthenticatedUser principal = getPrincipal(authentication);
+        List<ClassSubject> classSubjects = classSubjectUseCase.getStudentEnrolledClasses(principal.getId());
+        List<ClassSubjectResponse> responses = classSubjects.stream()
+                .map(classSubjectMapper::toResponse)
+                .collect(Collectors.toList());
+        return ApiResponse.apiResponseSuccess("Fetch enrolled classes succeeded", responses);
+    }
+
     @PostMapping("/{classSubjectId}/enroll-student")
     @PreAuthorize("hasAuthority('ROLE_TEACHER')")
     public ApiResponse<Object> enrollStudent(@PathVariable Long classSubjectId,
@@ -72,14 +82,11 @@ public class ClassSubjectController {
     }
 
     @PostMapping("/{classSubjectId}/assign-teacher")
-    @PreAuthorize("hasAuthority('ROLE_TEACHER')")
+    @PreAuthorize("hasAuthority('ROLE_TEACHER') and principal.position == T(org.dpnam28.workmanagement.domain.entity.PositionType).HEAD")
     public ApiResponse<Object> assignTeacher(@PathVariable Long classSubjectId,
                                              @RequestBody @Valid ClassSubjectAssignTeacherRequest request,
                                              Authentication authentication) {
         AuthenticatedUser principal = getPrincipal(authentication);
-        if (principal.getPosition() != PositionType.HEAD) {
-            throw new AppException(ErrorCode.ACCESS_DENIED);
-        }
         classSubjectUseCase.assignTeacher(classSubjectId, request.getTeacherId());
         return ApiResponse.apiResponseSuccess("Assign teacher succeeded", null);
     }
