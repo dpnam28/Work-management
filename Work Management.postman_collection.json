@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a55a444a-e444-4ca3-b563-e884ca7332f6",
+		"_postman_id": "dd01bb56-3a25-48b1-a0d1-205c28cd8403",
 		"name": "Work Management",
-		"description": "### Authentication api\n\n1. POST /api/auth/register: Đăng ký tài khoản cho student hoặc teacher\n    \n2. POST /api/auth/login: Đăng nhập -> trả về token\n    \n3. POST /api/auth/change-password: Đổi mật khẩu\n    \n4. POST /api/auth/inspector: Kiểm tra token (chỉ để test khi develop)\n    \n\n### Class Subjec api﻿\n\n5\\. /api/semester/{semesterId}: Tìm tất cả lớp trong kỳ học\n\n- ROLE_STUDENT\n    \n\n1. POST /api/class-subjects/{classSubjectId}/enroll: Đăng ký học vào lớp classSubjectId\n    \n2. DELETE /api/class-subjects/{classSubjectId}/enroll: Hủy đăng ký học ở lớp classSubjectId\n    \n\n- ROLE_TEACHER\n    \n\n1. POST /api/class-subjects/{classSubjectId}/enroll-student: Đăng ký cho học sinh vào lớp\n    \n2. POST /api/class-subjects/{classSubjectId}/assign-teacher: Chỉ định giáo viên dạy lớp học\n    \n3. GET /api/class-subjects/{classSubjectId}/students: Tìm tất cả học sinh đăng ký lớp học\n    \n4. GET /api/class-subjects/{classSubjectId}/teachers: Tìm tất cả giáo viên dạy lớp học\n    \n\n### Subject api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/subjects\n    \n2. PUT /api/subjects/{id}\n    \n3. GET /api/subjects\n    \n4. GET /api/subjects/{id}\n    \n\n### Semester api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/semesters\n    \n2. PUT /api/semesters/{id}\n    \n3. GET /api/semesters\n    \n4. GET /api/semesters/{id}\n    \n\n### Schedule api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/schedules\n    \n2. PUT /api/schedules/{id}\n    \n3. GET /api/schedules\n    \n4. GET /api/schedules/{id}\n    \n\n### Faculty api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/faculties\n    \n2. PUT /api/faculties/{id}\n    \n3. GET /api/faculties\n    \n4. GET /api/faculties/{id}",
+		"description": "### Authentication api\n\n1. POST /api/auth/register: Đăng ký tài khoản cho student hoặc teacher\n    \n2. POST /api/auth/login: Đăng nhập -> trả về token\n    \n3. POST /api/auth/change-password: Đổi mật khẩu\n    \n4. POST /api/auth/inspector: Kiểm tra token (chỉ để test khi develop)\n    \n\n### Class Subjec api﻿\n\n5\\. /api/semester/{semesterId}: Tìm tất cả lớp trong kỳ học\n\n- ROLE_STUDENT\n    \n\n1. POST /api/class-subjects/{classSubjectId}/enroll: Đăng ký học vào lớp classSubjectId\n    \n2. DELETE /api/class-subjects/{classSubjectId}/enroll: Hủy đăng ký học ở lớp classSubjectId\n    \n3. GET /api/class-subjects/enrolled: Học sinh xem tất cả môn đã đăng ký\n    \n\n- ROLE_TEACHER\n    \n\n1. POST /api/class-subjects/{classSubjectId}/enroll-student: Đăng ký cho học sinh vào lớp\n    \n2. POST /api/class-subjects/{classSubjectId}/assign-teacher: Chỉ định giáo viên dạy lớp học\n    \n3. GET /api/class-subjects/{classSubjectId}/students: Tìm tất cả học sinh đăng ký lớp học\n    \n4. GET /api/class-subjects/{classSubjectId}/teachers: Tìm tất cả giáo viên dạy lớp học\n    \n\n### Subject api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/subjects\n    \n2. PUT /api/subjects/{id}\n    \n3. GET /api/subjects\n    \n4. GET /api/subjects/{id}\n    \n\n### Semester api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/semesters\n    \n2. PUT /api/semesters/{id}\n    \n3. GET /api/semesters\n    \n4. GET /api/semesters/{id}\n    \n\n### Schedule api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/schedules\n    \n2. PUT /api/schedules/{id}\n    \n3. GET /api/schedules\n    \n4. GET /api/schedules/{id}\n    \n\n### Faculty api\n\n- ROLE_TEACHER\n    \n\n1. POST /api/faculties\n    \n2. PUT /api/faculties/{id}\n    \n3. GET /api/faculties\n    \n4. GET /api/faculties/{id}",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "44789326",
-		"_collection_link": "https://duongnam-1711403.postman.co/workspace/df51fadf-0f87-46e2-8ac7-b6835d8f634a/collection/44789326-a55a444a-e444-4ca3-b563-e884ca7332f6?action=share&source=collection_link&creator=44789326"
+		"_collection_link": "https://duongnam-1711403.postman.co/workspace/Test-workspace~3fdd47b7-3b56-4293-9670-3e8d19d27e57/collection/44789326-dd01bb56-3a25-48b1-a0d1-205c28cd8403?action=share&source=collection_link&creator=44789326"
 	},
 	"item": [
 		{
@@ -17,7 +17,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/auth/inspector?token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEBRCIsInVzZXJJZCI6NywiZW1haWwiOiJ0Y0AxLjExIiwic3ViIjoidGVhY2hlcjEiLCJpYXQiOjE3NjU0OTEyOTIsImV4cCI6MTc2NTU3NzY5Mn0.XxL6PuXDHjuATKL6-KBt7Rnp2yW6lCx5xbFKP8USi88",
+							"raw": "http://localhost:8080/api/auth/inspector?token=eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3Mzg0MywiZXhwIjoxNzY1NzYwMjQzfQ.pdM1UA8BjBs75UQ_x1FtEg2Dn7NYgkGhCcRMmkWR3fw",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -31,7 +31,7 @@
 							"query": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEBRCIsInVzZXJJZCI6NywiZW1haWwiOiJ0Y0AxLjExIiwic3ViIjoidGVhY2hlcjEiLCJpYXQiOjE3NjU0OTEyOTIsImV4cCI6MTc2NTU3NzY5Mn0.XxL6PuXDHjuATKL6-KBt7Rnp2yW6lCx5xbFKP8USi88"
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3Mzg0MywiZXhwIjoxNzY1NzYwMjQzfQ.pdM1UA8BjBs75UQ_x1FtEg2Dn7NYgkGhCcRMmkWR3fw"
 								}
 							]
 						}
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"username\": \"dpnam22\",\r\n  \"password\": \"123\",\r\n  \"fullName\": \"Nguyen Van B\",\r\n  \"phone\": \"0909888777\",\r\n  \"email\": \"w@example.com\",\r\n  \"role\": \"STUDENT\",\r\n  \"code\": \"A3443\",\r\n  \"entryYear\": 2025,\r\n  \"majorId\": 1\r\n}\r\n",
+							"raw": "{\r\n  \"username\": \"student1\",\r\n  \"password\": \"123\",\r\n  \"fullName\": \"Divviv avio\",\r\n  \"phone\": \"0909888777\",\r\n  \"email\": \"st@example.com\",\r\n  \"role\": \"STUDENT\",\r\n  \"code\": \"A31443\",\r\n  \"entryYear\": 2025,\r\n  \"majorId\": 1\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"tc@example.com\",\r\n    \"password\": \"123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"tct@example.com\",\r\n    \"password\": \"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -105,7 +105,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"tc\",\r\n    \"password\": \"123\",\r\n    \"fullName\": \"A Bc\",\r\n    \"phone\": \"0121212\",\r\n    \"email\": \"tc@example.com\",\r\n    \"role\": \"TEACHER\",\r\n    \"code\": \"A2012\",\r\n    \"position\": \"HEAD\",\r\n    \"facultyId\": 1\r\n}",
+							"raw": "{\r\n    \"username\": \"lectucre2\",\r\n    \"password\": \"123\",\r\n    \"fullName\": \"A Bc\",\r\n    \"phone\": \"0121212\",\r\n    \"email\": \"tct1@example.com\",\r\n    \"role\": \"TEACHER\",\r\n    \"code\": \"A01121\",\r\n    \"position\": \"LECTURER\",\r\n    \"facultyId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -157,6 +157,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTQ5MjcyNSwiZXhwIjoxNzY1NTc5MTI1fQ.NazweW5az30efJZ7tbiMb3sEdWpXohBWwJt3AY9njLc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -173,7 +203,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiU1RVREVOVCIsInVzZXJJZCI6OSwiZW1haWwiOiJ3QGV4YW1wbGUuY29tIiwic3ViIjoiZHBuYW0yMiIsImlhdCI6MTc2NTQ5MjI1OCwiZXhwIjoxNzY1NTc4NjU4fQ.gn_7hVqmOOA7nzE3YHz0_xnPV4snuzjWAj5BxjJgQnY",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiU1RVREVOVCIsInVzZXJJZCI6MTIsImVtYWlsIjoic3RAZXhhbXBsZS5jb20iLCJzdWIiOiJzdHVkZW50MSIsImlhdCI6MTc2NTY3OTUyMSwiZXhwIjoxNzY1NzY1OTIxfQ.o3taa0if5AE0o9iffZPvth5G8a55O9zF0hqIeWftOJ0",
 										"type": "text"
 									}
 								],
@@ -187,7 +217,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/class-subjects/1/enroll",
+									"raw": "http://localhost:8080/api/class-subjects/3/enroll",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -196,7 +226,7 @@
 									"path": [
 										"api",
 										"class-subjects",
-										"1",
+										"3",
 										"enroll"
 									]
 								}
@@ -230,6 +260,40 @@
 										"class-subjects",
 										"1",
 										"enroll"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all enrolled classes (student)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiU1RVREVOVCIsInVzZXJJZCI6MTIsImVtYWlsIjoic3RAZXhhbXBsZS5jb20iLCJzdWIiOiJzdHVkZW50MSIsImlhdCI6MTc2NTY3OTUyMSwiZXhwIjoxNzY1NzY1OTIxfQ.o3taa0if5AE0o9iffZPvth5G8a55O9zF0hqIeWftOJ0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/class-subjects/enrolled",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"class-subjects",
+										"enrolled"
 									]
 								}
 							},
@@ -278,13 +342,13 @@
 							"response": []
 						},
 						{
-							"name": "Assign teacher to class (teacher)",
+							"name": "Assign teacher to class (teacher - head)",
 							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTQ5MjcyNSwiZXhwIjoxNzY1NTc5MTI1fQ.NazweW5az30efJZ7tbiMb3sEdWpXohBWwJt3AY9njLc",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3MzczOCwiZXhwIjoxNzY1NzYwMTM4fQ.M428bDyL59UbnIFzjYpBsw9xs6KlmI7RDcG2EnTFfu8",
 										"type": "text"
 									}
 								],
@@ -368,7 +432,7 @@
 									"raw": "{\r\n    \"teacherId\": 2\r\n}"
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/class-subjects/1/teachers",
+									"raw": "http://localhost:8080/api/class-subjects/2/teachers",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -377,7 +441,7 @@
 									"path": [
 										"api",
 										"class-subjects",
-										"1",
+										"2",
 										"teachers"
 									]
 								}
@@ -994,6 +1058,740 @@
 								"api",
 								"subjects",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meeting",
+			"item": [
+				{
+					"name": "Create meeting (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"facultyId\": 1,\r\n    \"meetingTitle\": \"khoa hoc may tinh\",\r\n    \"meetingDescription\": \"Hop ve xu ly thong tin\",\r\n    \"date\": \"2025-12-12T12:12:12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/meetings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"meetings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update meeting (teacher)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"meetingTitle\": \"Information technology\",\r\n    \"meetingDescription\": \"\",\r\n    \"date\": \"2025-12-12T12:12:12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/meetings/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"meetings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete meeting (teacher)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/meetings/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"meetings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plan",
+			"item": [
+				{
+					"name": "Create plan (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"planTitle\": \"Ke hoach 2\",\r\n    \"planDescription\": \"Thong tin ke hoach 2\",\r\n    \"facultyId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/plans",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve plan (teacher - head)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"meetingTitle\": \"Information technology\",\r\n    \"meetingDescription\": \"\",\r\n    \"date\": \"2025-12-12T12:12:12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/plans/1/approve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"plans",
+								"1",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject plan (teacher - head)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/plans/2/reject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"plans",
+								"2",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update plan (teacher own plan or teacher head)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiTEVDVFVSRVIiLCJ1c2VySWQiOjE0LCJlbWFpbCI6InRjdDFAZXhhbXBsZS5jb20iLCJzdWIiOiJsZWN0dWNyZTIiLCJpYXQiOjE3NjU2ODA5NzcsImV4cCI6MTc2NTc2NzM3N30.u7LLJqSPq8dtY09w4QRwOVhslhh-z3S0gYhCSwmPFvI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"planTitle\": \"Ke hoach 2\",\r\n    \"planDescription\": \"Thong tin ke hoach 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/plans/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"plans",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Plans (teacher - head)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY4MTI0NCwiZXhwIjoxNzY1NzY3NjQ0fQ.6FoIkCe25sLmNe06YAdonavSfoVgWXEoSXivaSq848A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"planTitle\": \"Ke hoach 2\",\r\n    \"planDescription\": \"Thong tin ke hoach 2\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/plans",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"plans"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create task (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "planId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "taskTitle",
+									"value": "Cong viec 3",
+									"type": "text"
+								},
+								{
+									"key": "deadline",
+									"value": "2025-12-12T12:12:12",
+									"type": "text"
+								},
+								{
+									"key": "taskDescription",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/1/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								"complete"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark task as done (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks/2/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks",
+								"2",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all task (teacher - head)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task Assignment",
+			"item": [
+				{
+					"name": "Assign task (teacher - head)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"taskId\": 2,\r\n    // \"assignedToTeacherId\": \"\",\r\n    \"assignedToFacultyId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/task-assignments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"task-assignments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get task (teacher)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiTEVDVFVSRVIiLCJ1c2VySWQiOjEzLCJlbWFpbCI6InRjdEBleGFtcGxlLmNvbSIsInN1YiI6ImxlY3R1Y3JlMSIsImlhdCI6MTc2NTY5MjIxMywiZXhwIjoxNzY1Nzc4NjEzfQ.B5wZTQmRUCAbTbPDc6HyrcT7FVgCuvgj7q1qcBzZlJ4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"meetingTitle\": \"Information technology\",\r\n    \"meetingDescription\": \"\",\r\n    \"date\": \"2025-12-12T12:12:12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/task-assignments/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"task-assignments",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get faculty task (teacher)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/task-assignments/faculties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"task-assignments",
+								"faculties",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Create report (teacher)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "planId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "reportTitle",
+									"value": "Bao cao 1",
+									"type": "text"
+								},
+								{
+									"key": "reportContent",
+									"value": "this is a content",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update report (teacher)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "reportTitle",
+									"value": "Bao cao 2",
+									"type": "text"
+								},
+								{
+									"key": "reportContent",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reports/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reports",
+								"2"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete report (teacher)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reports/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reports",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all reports (teacher - head)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInBvc2l0aW9uIjoiSEVBRCIsInVzZXJJZCI6MTAsImVtYWlsIjoidGNAZXhhbXBsZS5jb20iLCJzdWIiOiJ0YyIsImlhdCI6MTc2NTY3NzY4NiwiZXhwIjoxNzY1NzY0MDg2fQ.DnTsvWjHhNArB2KpHIzzBE0H5N5D-uiKLp8YoAGHpa0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reports"
 							]
 						}
 					},
