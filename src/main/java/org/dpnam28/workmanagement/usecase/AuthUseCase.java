@@ -11,7 +11,7 @@ import org.dpnam28.workmanagement.domain.entity.Teacher;
 import org.dpnam28.workmanagement.domain.entity.User;
 import org.dpnam28.workmanagement.domain.exception.AppException;
 import org.dpnam28.workmanagement.domain.exception.ErrorCode;
-import org.dpnam28.workmanagement.domain.repository.UserRepository;
+import org.dpnam28.workmanagement.infrastructure.repository.UserJpaRepository;
 import org.dpnam28.workmanagement.infrastructure.repository.FacultyJpaRepository;
 import org.dpnam28.workmanagement.infrastructure.repository.MajorJpaRepository;
 import org.dpnam28.workmanagement.infrastructure.repository.StudentJpaRepository;
@@ -30,7 +30,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 @Service
 @RequiredArgsConstructor
 public class AuthUseCase {
-    private final UserRepository userRepository;
+    private final UserJpaRepository userRepository;
     private final PasswordEncoder encoder;
     private final JwtService jwtService;
     private final StudentJpaRepository studentRepository;
@@ -38,12 +38,12 @@ public class AuthUseCase {
     private final MajorJpaRepository majorRepository;
     private final FacultyJpaRepository facultyRepository;
 
-    public User login(String email, String password){
+    public User login(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if(user == null){
+        if (user == null) {
             throw new AppException(ErrorCode.USER_NOT_FOUND);
         }
-        if(!encoder.matches(password, user.getPassword())){
+        if (!encoder.matches(password, user.getPassword())) {
             throw new AppException(ErrorCode.INVALID_PASSWORD);
         }
         if (user.getRole() == RoleType.TEACHER) {
@@ -55,7 +55,7 @@ public class AuthUseCase {
     }
 
     @Transactional
-    public User register(AuthRegisterRequest request){
+    public User register(AuthRegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new AppException(ErrorCode.USER_ALREADY_EXISTS);
         }
@@ -68,14 +68,16 @@ public class AuthUseCase {
         var faculty = validateTeacherRequestIfNeeded(request);
         User user = User.builder()
                 .username(request.getUsername())
-                .password(request.getPassword())
                 .fullName(request.getFullName())
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .role(role)
                 .build();
+        String hashedPassword = encoder.encode(request.getPassword());
+        user.setPassword(hashedPassword);
         User saved = userRepository.save(user);
-        User managedUser = userRepository.findById(saved.getId());
+        User managedUser = userRepository.findById(saved.getId())
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         switch (role) {
             case STUDENT -> createStudentProfile(request, major, managedUser);
@@ -173,7 +175,8 @@ public class AuthUseCase {
         if (userId == null) {
             throw new AppException(ErrorCode.TOKEN_INVALID);
         }
-        User user = userRepository.findById(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
         if (user == null) {
             throw new AppException(ErrorCode.USER_NOT_FOUND);
         }
